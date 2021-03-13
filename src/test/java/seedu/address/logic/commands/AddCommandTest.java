@@ -13,6 +13,7 @@ import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -210,6 +211,16 @@ public class AddCommandTest {
         public void updateFilteredCheeseList(Predicate<Cheese> predicate) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public void setScreenNumber(int screenNumber) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public SimpleIntegerProperty getScreenNumber() {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
@@ -251,6 +262,10 @@ public class AddCommandTest {
         @Override
         public ReadOnlyAddressBook getAddressBook() {
             return new AddressBook();
+        }
+
+        @Override
+        public void setScreenNumber(int screenNumber) {
         }
     }
 

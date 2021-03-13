@@ -55,6 +55,7 @@ public class AddCommand extends Command {
         }
 
         model.addCustomer(toAdd);
+        model.setScreenNumber(0);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

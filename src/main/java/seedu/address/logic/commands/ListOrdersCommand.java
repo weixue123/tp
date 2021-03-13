@@ -18,6 +18,7 @@ public class ListOrdersCommand extends Command {
     public CommandResult execute(Model model) {
         requireNonNull(model);
         model.updateFilteredOrderList(PREDICATE_SHOW_ALL_ORDERS);
+        model.setScreenNumber(2);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

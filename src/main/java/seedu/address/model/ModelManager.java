@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
@@ -26,6 +27,8 @@ public class ModelManager implements Model {
     private final FilteredList<Customer> filteredCustomers;
     private final FilteredList<Order> filteredOrders;
     private final FilteredList<Cheese> filteredCheeses;
+
+    private SimpleIntegerProperty screenNumber = new SimpleIntegerProperty(0);
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -241,6 +244,16 @@ public class ModelManager implements Model {
                 && filteredCustomers.equals(other.filteredCustomers)
                 && filteredOrders.equals(other.filteredOrders)
                 && filteredCheeses.equals(other.filteredCheeses);
+    }
+
+    @Override
+    public void setScreenNumber(int screenNumber) {
+        this.screenNumber = new SimpleIntegerProperty(screenNumber);
+    }
+
+    @Override
+    public SimpleIntegerProperty getScreenNumber() {
+        return screenNumber;
     }
 
 }
