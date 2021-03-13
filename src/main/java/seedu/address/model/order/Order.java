@@ -153,18 +153,18 @@ public class Order {
         final StringBuilder builder = new StringBuilder();
 
         builder.append(getOrderId())
-                .append("; Cheese Type: ")
-                .append(getCheeseType())
-                .append("; Quantity: ")
-                .append(getQuantity())
-                .append("; Order Date: ")
-                .append(getOrderDate())
-                .append("; Completed Date: ")
-                .append(getCompletedDate())
-                .append("; Customer ID: ")
-                .append(getCustomerId())
-                .append("; Cheese IDs: ")
-                .append(getCheeses());
+            .append("; Cheese Type: ")
+            .append(getCheeseType())
+            .append("; Quantity: ")
+            .append(getQuantity())
+            .append("; Order Date: ")
+            .append(getOrderDate())
+            .append("; Completed Date: ")
+            .append(getCompletedDate())
+            .append("; Customer ID: ")
+            .append(getCustomerId())
+            .append("; Cheese IDs: ")
+            .append(getCheeses());
 
         return builder.toString();
     }

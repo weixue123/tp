@@ -12,7 +12,7 @@ import seedu.address.ui.UiPart;
  */
 public class CheeseCard extends UiPart<Region> {
 
-    private static final String FXML = "CheeseListCard.fxml";
+    private static final String FXML = "CheeseCard.fxml";
 
     public final Cheese cheese;
 
@@ -37,9 +37,9 @@ public class CheeseCard extends UiPart<Region> {
         this.cheese = cheese;
         id.setText(displayedIndex + ". ");
         cheeseType.setText(cheese.getCheeseType().toString());
-        manufactureDate.setText(cheese.getManufactureDate().toString());
-        maturityDate.setText(cheese.getMaturityDate().toString());
-        expiryDate.setText(cheese.getExpiryDate().toString());
+        manufactureDate.setText("Manufacture Date: " + cheese.getManufactureDate().toString());
+        maturityDate.setText("Maturity Date: " + cheese.getMaturityDate().toString());
+        expiryDate.setText("Expiry Date: " + cheese.getExpiryDate().toString());
     }
 
     @Override

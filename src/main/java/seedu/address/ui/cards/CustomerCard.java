@@ -15,7 +15,7 @@ import seedu.address.ui.UiPart;
  */
 public class CustomerCard extends UiPart<Region> {
 
-    private static final String FXML = "CustomerListCard.fxml";
+    private static final String FXML = "CustomerCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.

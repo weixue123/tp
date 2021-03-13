@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import seedu.address.model.customer.Customer;
 import seedu.address.model.order.Order;
 import seedu.address.ui.UiPart;
 
@@ -12,7 +13,7 @@ import seedu.address.ui.UiPart;
  */
 public class OrderCard extends UiPart<Region> {
 
-    private static final String FXML = "OrderListCard.fxml";
+    private static final String FXML = "OrderCard.fxml";
 
     public final Order order;
 
@@ -23,6 +24,10 @@ public class OrderCard extends UiPart<Region> {
     @FXML
     private Label cheeseType;
     @FXML
+    private Label name;
+    @FXML
+    private Label phone;
+    @FXML
     private Label quantity;
     @FXML
     private Label orderDate;
@@ -32,17 +37,16 @@ public class OrderCard extends UiPart<Region> {
     /**
      * Creates an {@code OrderCard} with the given {@code Order} and index to display.
      */
-    public OrderCard(Order order, int displayedIndex) {
+    public OrderCard(Order order, Customer customer, int displayedIndex) {
         super(FXML);
         this.order = order;
         id.setText(displayedIndex + ". ");
         cheeseType.setText(order.getCheeseType().toString());
-        quantity.setText(order.getQuantity().toString());
-        orderDate.setText(order.getOrderDate().toString());
-        completedDate.setText(order.getCompletedDate().toString());
-
-        // TODO: Add in customer details. To do that, we must be able to access
-        //       the Customer object from within the Order class.
+        name.setText(customer.getName().toString());
+        phone.setText(customer.getPhone().toString());
+        quantity.setText("Quantity: " + order.getQuantity().toString());
+        orderDate.setText("Order Date: " + order.getOrderDate().toString());
+        completedDate.setText("Completed Date: " + (order.isComplete() ? order.getCompletedDate().toString() : "-"));
     }
 
     @Override
