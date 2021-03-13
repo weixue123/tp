@@ -2,6 +2,7 @@ package seedu.address.model.order;
 
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
@@ -35,6 +36,18 @@ public class Order {
         this(cheeseType, quantity, orderDate, completedDate, new HashSet<>(), customerId);
     }
 
+    /**
+     * Initializes an incomplete order.
+     * Completed date is set to 9999-12-31 23:59 to indicate the order is incomplete.
+     */
+    public Order(CheeseType cheeseType, Quantity quantity, OrderDate orderDate, CustomerId customerId) {
+        this(cheeseType, quantity, orderDate, new CompletedDate("9999-12-31 23:59"), new HashSet<>(),
+                OrderId.getNextId(), customerId);
+    }
+
+    /**
+     * Initializes a complete order with date of completion and the IDs of cheeses used to fulfil the order.
+     */
     public Order(CheeseType cheeseType, Quantity quantity, OrderDate orderDate, CompletedDate completedDate,
                  Set<CheeseId> cheeses, CustomerId customerId) {
         this(cheeseType, quantity, orderDate, completedDate, cheeses, OrderId.getNextId(), customerId);
@@ -74,6 +87,11 @@ public class Order {
 
     public CompletedDate getCompletedDate() {
         return completedDate;
+    }
+
+    public boolean isComplete() {
+        // If an order is incomplete, the date must have been set to 9999-12-31 23:59 to indicate so.
+        return !completedDate.value.equals(LocalDateTime.of(9999, 12, 31, 23, 59));
     }
 
     public OrderId getOrderId() {
@@ -135,18 +153,18 @@ public class Order {
         final StringBuilder builder = new StringBuilder();
 
         builder.append(getOrderId())
-            .append("; Cheese Type: ")
-            .append(getCheeseType())
-            .append("; Quantity: ")
-            .append(getQuantity())
-            .append("; Order Date: ")
-            .append(getOrderDate())
-            .append("; Completed Date: ")
-            .append(getCompletedDate())
-            .append("; Customer ID: ")
-            .append(getCustomerId())
-            .append("; Cheese IDs: ")
-            .append(getCheeses());
+                .append("; Cheese Type: ")
+                .append(getCheeseType())
+                .append("; Quantity: ")
+                .append(getQuantity())
+                .append("; Order Date: ")
+                .append(getOrderDate())
+                .append("; Completed Date: ")
+                .append(getCompletedDate())
+                .append("; Customer ID: ")
+                .append(getCustomerId())
+                .append("; Cheese IDs: ")
+                .append(getCheeses());
 
         return builder.toString();
     }

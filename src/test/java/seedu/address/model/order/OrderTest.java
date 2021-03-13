@@ -6,6 +6,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_CHEESE_TYPE_BRI
 import static seedu.address.logic.commands.CommandTestUtil.VALID_CHEESE_TYPE_CAMEMBERT;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPLETED_DATE_1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_COMPLETED_DATE_2;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_INCOMPLETE_DATE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ORDER_DATE_1;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_ORDER_DATE_2;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_QUANTITY_1;
@@ -124,5 +125,19 @@ public class OrderTest {
         assertFalse(ORDER_CAMEMBERT.equals(editedCamembertOrder));
 
         // TODO: Add test for different cheese IDs
+    }
+
+    @Test
+    public void isComplete() {
+        Order completedOrder1 = new OrderBuilder().withCompletedDate(VALID_COMPLETED_DATE_1).build();
+        Order completedOrder2 = new OrderBuilder().withCompletedDate(VALID_COMPLETED_DATE_2).build();
+        assertTrue(completedOrder1.isComplete());
+        assertTrue(completedOrder2.isComplete());
+    }
+
+    @Test
+    public void isIncomplete() {
+        Order incompleteOrder = new OrderBuilder().withCompletedDate(VALID_INCOMPLETE_DATE).build();
+        assertFalse(incompleteOrder.isComplete());
     }
 }
